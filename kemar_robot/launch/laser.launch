@@ -1,0 +1,5 @@
+<launch>
+  <node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node">
+     <param name="port" type="string" value="/dev/Hokuyo"/>
+  </node>
+</launch>

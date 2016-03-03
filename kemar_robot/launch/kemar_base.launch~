@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="odometry_listener" type="odometry_listener" name="odometry_listener"/>
+  <include file="$(find kemar_robot)/launch/laser.launch"/>
+  <include file="$(find kemar_robot)/launch/tf_base_link_to_laser.launch"/>
+</launch>

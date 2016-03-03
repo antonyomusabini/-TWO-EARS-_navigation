@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find roboteq_driver)/launch/example.launch"/>
+  <node pkg="roboteq_driver" type="kemar_drive.py" name="kemar_drive"/>
+</launch>

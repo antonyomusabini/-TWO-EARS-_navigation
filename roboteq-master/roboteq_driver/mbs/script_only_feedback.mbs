@@ -1,0 +1,40 @@
+SCRIPT_VER=8
+MAX_CHANNELS=2
+
+top:
+	for ch = 1 andwhile ch <= MAX_CHANNELS evaluate ch++
+		if getvalue(_BOOL, ch) = 1 then
+			GoSub PrintFeedback  ' 25 Hz
+		end if
+	next
+	c++
+	if c = 5 then
+		GoSub PrintStatus  ' 5 Hz
+		c = 0
+	end if
+	wait(19)
+	goto top
+
+PrintFeedback:
+	print("&f:", ch)
+	print(":", getvalue(_MOTAMPS, ch))
+	print(":", getvalue(_MOTCMD, ch))
+	print(":", getvalue(_MOTPWR, ch))
+	print(":", getvalue(_ABSPEED, ch))
+	print(":", getvalue(_ABCNTR, ch))
+	print(":", getvalue(_VOLTS, 2))
+	print(":", getvalue(_BATAMPS, ch))
+	print(":", getvalue(_ANAIN, ch))
+	print(":", getvalue(_TEMP, ch+1))
+	print("\r")
+	Return
+	
+PrintStatus:
+	print("&s:", SCRIPT_VER)
+	print(":", getvalue(_FLTFLAG))
+	print(":", getvalue(_STFLAG))
+	print(":", getvalue(_VOLTS, 1))
+	print(":", getvalue(_VOLTS, 3))
+	print(":", getvalue(_TEMP, 1))
+	print("\r")
+	Return

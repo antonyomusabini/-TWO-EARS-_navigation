@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find navigation_kemar)/maps/rotondeUPMC.yaml" respawn="false" output="screen"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find navigation_kemar)/launch/amcl_v2.launch" />
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+    <rosparam file="$(find navigation_kemar)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find navigation_kemar)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find navigation_kemar)/params/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find navigation_kemar)/params/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find navigation_kemar)/params/base_local_planner_params.yaml" command="load" />
+  </node>
+
+</launch>

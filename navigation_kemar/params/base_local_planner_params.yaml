@@ -1,0 +1,30 @@
+
+controller_frequency: 5.0 
+planner_frequency: 5.0 
+
+TrajectoryPlannerROS:
+
+  acc_lim_x: 2.5
+  acc_lim_y: 2.5
+  acc_lim_theta: 2.5 # ANT modif 3.2
+
+  max_vel_x: 0.3
+  min_vel_x: 0.1
+
+  max_vel_theta: 0.7
+  min_vel_theta: -0.7
+
+  max_rotational_vel: 0.2
+  min_in_place_vel_thetha: 0.1 # 0.4
+
+  holonomic_robot: false
+
+  sim_time: 2.0 #estava 1.2 (3.0 no stingbot)
+
+  # max_rotational_vel: 0.15 # 1.0
+  # min_in_place_rotational_vel: 0.1 # 0.4
+
+  xy_goal_tolerance: 0.5 #estava 0.5 # (double, default: 0.10)
+  yaw_goal_tolerance: 0.5 #estava 0.5 # (double, default: 0.05)
+
+  # latch_xy_goal_tolerance (bool, default: false)
